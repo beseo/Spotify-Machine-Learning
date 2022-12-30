@@ -4,7 +4,7 @@ Using Spotify's REST API to gather data, and analyze and predict with the gather
 
 The overall goal of the project:
 
- - Gather data on every single track in Spotify's Top 100 Billboard playlist <i>(as of November 23, 2022)</i> using Spotify's REST API and the requests module in Python.
+ - Gather data on every single track in Spotify's Top 100 Billboard playlist <i>(as of December 19, 2022)</i> using Spotify's REST API and the requests module in Python.
 
  - Create visualizations using Seaborn and Plotly and perform analysis with the data that I find. 
  
