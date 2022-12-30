@@ -11,7 +11,7 @@ The overall goal of the project:
  - Make educated predictions through the use of Scikit to answer the question: "What makes a hit song?"
 
 This github page covers the <b>first half</b> of this project, which involves <b>gathering the data</b>.<br><br>
-The <b>second half</b> of this project may be seen on my <b>Kaggle notebook</b>, which covers <b>data wrangling, analysis, visualization, and machine learning</b>: <b>[Link] (https://www.kaggle.com/code/beomsukseo/spotify-billboard-analysis)</b>
+The <b>second half</b> of this project may be seen on my <b>Kaggle notebook</b>, which covers <b>data wrangling, analysis, visualization, and machine learning</b>: <b><a href = "https://www.kaggle.com/code/beomsukseo/spotify-billboard-analysis">Link</b>
  
 # <b>Preparation to Gather the Data</b>
 
@@ -95,7 +95,7 @@ playlist_search_url = f"https://api.spotify.com/v1/playlists/{playlist_id}"
 #header for requests *(This is Spotify's specific format)
 header = {"Authorization": f"Bearer {access_token}"}
 ```
-<b>Receiving All the Data in the Chosen Playlist</b>
+# Receiving All the Metadata of Each Track in the Chosen Playlist
 
 To get the playlist data, we use the requests module, inputting the playlist search URL as well as the headers we defined above as parameters. The json module will also be used to format the requests response.
 
@@ -117,7 +117,7 @@ cols = {'artist_name': [], 'track_name': [], 'danceability': [], 'energy': [], \
 df = pd.DataFrame(cols)
 ```
 
-<font size = 4><b>Formatting our data to fit into our table:</b>
+# Data wrangling - Formatting our data to fit into our table
 
 We will be running a loop through the playlist_data we found above, and for every track we will separately look up its specific audio data. With this, we must format them into our Pandas DataFrame automatically.
 
@@ -154,7 +154,7 @@ def get_track_data(track_data, audio_data):
     mode, speechiness, acousticness, instrumentalness, liveness, valence, \
     tempo, duration_ms, time_signature]
 ```
-<font size = 4><b>Iterating Through the Playlist</b>
+# <b>Iterating Through the Playlist</b>
 
 Now to actually go through our specified playlist, we loop over the length of the amount of tracks in the playlist. For each iteration, we get all the data we can about the track from Spotify's REST database, then call our get_track_data() method to format the data, and finally insert it into our DataFrame (<i>The inline comments will explain in more detail if you're interested</i>).</font>
 
@@ -179,6 +179,7 @@ for index in range(len(playlist_data["tracks"]["items"])):
     # add the list of data (in-order) for this track into our dataframe at the next available row.
     df.loc[len(df.index)] = track_values
 ```
+# Export and Conclusion
 Finally, we can export our Pandas DataFrame as a .csv file so we can use our newly found data in the next section of the project. If you've made it this far, thank you! As a reminder, the next and final part of this project is available on my Kaggle notebook <a href = "https://www.kaggle.com/code/beomsukseo/spotify-billboard-analysis"><b>here.</b></a>
 ```Python
 df.to_csv('tracks.csv')
